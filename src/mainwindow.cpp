@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    this->setWindowIcon(QIcon(":/res/icon.png"));
+
     this->m_origin_image = new QImage();
     this->m_result_image = new QImage();
 
