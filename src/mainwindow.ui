@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1280</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,28 @@
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
-       <widget class="QGraphicsView" name="graphicsView"/>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>origin</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QGraphicsView" name="graphicsView"/>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="title">
+         <string>result</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QGraphicsView" name="graphicsView_2"/>
+         </item>
+        </layout>
+       </widget>
       </item>
      </layout>
     </item>
@@ -29,7 +50,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1280</width>
      <height>20</height>
     </rect>
    </property>
