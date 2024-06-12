@@ -24,6 +24,11 @@ private:
 private slots:
     void onOpenActionTriggered();
     void onSaveActionTriggered();
+    void onResultDisplay();
+    void onRowSPBVChanged(int);
+    void onColumnSPBVChanged(int);
+    void onStepValueChanged(int);
+    void onBrightnessValueChanged(double);
 
 private:
     Ui::MainWindow *ui;
@@ -37,5 +42,10 @@ private:
 
     QGraphicsScene *m_origin_scene;
     QGraphicsScene *m_result_scene;
+
+    QString m_origin_path;
+
+    double m_brightness;
+    unsigned int m_step;
 };
 #endif // MAINWINDOW_H

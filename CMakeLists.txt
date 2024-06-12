@@ -18,6 +18,8 @@ set(PROJECT_SOURCES
         src/main.cpp
         src/mainwindow.cpp
         src/mainwindow.h
+        src/separator.cpp
+        src/separator.h
         src/mainwindow.ui
         i18n/${TS_FILES}
 )
