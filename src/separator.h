@@ -17,11 +17,10 @@ public:
     Separator();
     virtual ~Separator();
 
-    std::vector<std::pair<QPoint, QPoint>>& get_coordinate_separation_with_2D(unsigned int width, unsigned int height, unsigned int row, unsigned int column);
+    std::vector<std::pair<QPoint, QPoint>> &get_coordinate_separation_with_2D(unsigned int width, unsigned int height, unsigned int row, unsigned int column);
 
 private:
     std::vector<std::pair<QPoint, QPoint>> coordinate_list;
 };
 
 #endif
-

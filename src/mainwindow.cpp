@@ -9,8 +9,7 @@
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
@@ -95,7 +94,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QColor MainWindow::pixmapMainColor(const QImage& image, double bright, unsigned int step)
+QColor MainWindow::pixmapMainColor(const QImage &image, double bright, unsigned int step)
 {
     unsigned int u_step = step;
     if (u_step > 99 || u_step < 1)
@@ -104,22 +103,25 @@ QColor MainWindow::pixmapMainColor(const QImage& image, double bright, unsigned 
         u_step = image.width() - 1;
     if (u_step < image.height())
         u_step = image.height() - 1;
-    int t=1;
-    int r=0,g=0,b=0;
-    for (int i=0;i<image.width();i+=u_step) {
-        for (int j=0;j<image.height();j+=u_step) {
-            if(image.valid(i,j)){
+    int t = 1;
+    int r = 0, g = 0, b = 0;
+    for (int i = 0; i < image.width(); i += u_step)
+    {
+        for (int j = 0; j < image.height(); j += u_step)
+        {
+            if (image.valid(i, j))
+            {
                 t++;
-                QColor c=image.pixel(i,j);
-                r+=c.red();
-                b+=c.blue();
-                g+=c.green();
+                QColor c = image.pixel(i, j);
+                r += c.red();
+                b += c.blue();
+                g += c.green();
             }
         }
     }
-    return QColor(int(bright*r/t)>255?255:int(bright*r/t),
-                  int(bright*g/t)>255?255:int(bright*g/t),
-                  int(bright*b/t)>255?255:int(bright*b/t));
+    return QColor(int(bright * r / t) > 255 ? 255 : int(bright * r / t),
+                  int(bright * g / t) > 255 ? 255 : int(bright * g / t),
+                  int(bright * b / t) > 255 ? 255 : int(bright * b / t));
 }
 
 void MainWindow::onOpenActionTriggered()
@@ -178,15 +180,15 @@ void MainWindow::onResultDisplay()
     unsigned int row = (unsigned int)this->ui->row_spb->value();
     unsigned int column = (unsigned int)this->ui->column_spb->value();
     std::vector<std::pair<QPoint, QPoint>> coord_list = s.get_coordinate_separation_with_2D(this->m_result_image->width(),
-                                        this->m_result_image->height(),
-                                        row,
-                                        column
-                                        );
+                                                                                            this->m_result_image->height(),
+                                                                                            row,
+                                                                                            column);
     QPixmap pm_out = QPixmap::fromImage(*(this->m_result_image));
     QPainter painter(&pm_out);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setRenderHint(QPainter::SmoothPixmapTransform);
-    for (const auto & v : coord_list) {
+    for (const auto &v : coord_list)
+    {
         QPixmap pm_u(v.second.x() - v.first.x(), v.second.y() - v.first.y());
         QRect rect(v.first.x(), v.first.y(), v.second.x(), v.second.y());
         QImage cop_img = this->m_origin_image->copy(rect);
